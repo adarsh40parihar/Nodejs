@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon ./Class_6_auth_mvc/api.js"
+    "start": "npx nodemon ./Class_7_REST_API_MVC/api.js"
   },
   "keywords": [],
   "author": "",
