@@ -20,6 +20,24 @@ mongoose
 
 app.use(express.json());
 
+/***********************Auth Methods & route************************/
+const { loginHandler, signupHandler, protectRouteMiddleware, getProfileHandler, logOutHandler, isAdminMiddleWare } = require("./auth_methods_and_route")
+
+app.post("/login",loginHandler);
+app.post("/signup", signupHandler);
+app.get("/profile",protectRouteMiddleware, getProfileHandler);
+app.get("/logout", logOutHandler);
+
+
+/************************routes and their handlers**********************/
+const { createUser, getUser, getAllUser, deleteUser, } = require("./userControllers");
+
+app.post("/user", createUser);
+app.get("/user/:userId", getUser);
+app.get("/user/", protectRouteMiddleware, isAdminMiddleWare, getAllUser);
+app.delete("/user/:userId", protectRouteMiddleware, deleteUser);
+
+
 const port = 3000;
 app.listen(port, function () {
   console.log(`server is running at Port ${port}.`);
